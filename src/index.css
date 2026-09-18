@@ -1,0 +1,183 @@
+@import url('https://fonts.googleapis.com/css2?family=Syne:wght@700;800&family=Space+Grotesk:wght@400;500;600;700&display=swap');
+@import 'tailwindcss';
+
+@theme {
+  /* Neo-Retro Pop / Risograph palette */
+  --color-cream: #fdf8f0;
+  --color-paper: #f5efe6;
+  --color-ink: #1a1a1a;
+  --color-grape: #3a0ca3;
+  --color-grape-deep: #2a0875;
+  --color-punch: #f72585;
+  --color-splash: #4cc9f0;
+  --color-butter: #ffd166;
+  --color-kelly: #00a86b;
+  --color-plum: #4a154b;
+
+  --font-display: 'Syne', 'Arial Black', system-ui, sans-serif;
+  --font-body: 'Space Grotesk', system-ui, -apple-system, sans-serif;
+
+  --shadow-neo-sm: 3px 3px 0px #1a1a1a;
+  --shadow-neo: 4px 4px 0px #1a1a1a;
+  --shadow-neo-md: 6px 6px 0px #1a1a1a;
+  --shadow-neo-lg: 10px 10px 0px #1a1a1a;
+  --shadow-neo-xl: 12px 12px 0px #1a1a1a;
+}
+
+html {
+  -webkit-tap-highlight-color: transparent;
+}
+
+body {
+  background-color: var(--color-cream);
+  color: var(--color-ink);
+  font-family: var(--font-body);
+  overflow-x: hidden;
+}
+
+/* Warm risograph-paper canvas: sunlight wash up top, dotted grain over cream */
+.paper-grain {
+  background-color: var(--color-cream);
+  background-image:
+    radial-gradient(ellipse 90% 240px at 50% -60px, #ffd16655, transparent 70%),
+    radial-gradient(ellipse 70% 200px at 50% -40px, #f7258522, transparent 70%),
+    radial-gradient(#1a1a1a14 1px, transparent 1.5px);
+  background-size:
+    auto,
+    auto,
+    20px 20px;
+}
+
+/* Cream ghost type for the desktop backdrop */
+.text-outline-cream {
+  -webkit-text-stroke: 2px var(--color-cream);
+  color: transparent;
+}
+
+/* Bold halftone fields for the desktop poster backdrop */
+.halftone-pop {
+  background-image: radial-gradient(#f7258566 1.8px, transparent 2.4px);
+  background-size: 16px 16px;
+}
+
+.halftone-kelly {
+  background-image: radial-gradient(#00a86b66 1.8px, transparent 2.4px);
+  background-size: 18px 18px;
+}
+
+/* Film-grain noise overlay (SVG turbulence, pointer-transparent) */
+.noise::after {
+  content: '';
+  position: absolute;
+  inset: 0;
+  pointer-events: none;
+  opacity: 0.5;
+  mix-blend-mode: multiply;
+  background-image: url("data:image/svg+xml,%3Csvg xmlns='http://www.w3.org/2000/svg' width='140' height='140'%3E%3Cfilter id='n'%3E%3CfeTurbulence type='fractalNoise' baseFrequency='0.9' numOctaves='2'/%3E%3CfeColorMatrix type='saturate' values='0'/%3E%3C/filter%3E%3Crect width='140' height='140' filter='url(%23n)' opacity='0.16'/%3E%3C/svg%3E");
+}
+
+/* Splash impact ring */
+@keyframes unseal-impact {
+  0% {
+    transform: scale(0.4);
+    opacity: 0.9;
+  }
+  100% {
+    transform: scale(1.6);
+    opacity: 0;
+  }
+}
+.animate-impact {
+  animation: unseal-impact 0.7s ease-out 0.55s both;
+}
+
+/* Splash loading bar stripes */
+@keyframes unseal-stripes {
+  from {
+    background-position: 0 0;
+  }
+  to {
+    background-position: 28px 0;
+  }
+}
+.barber-stripes {
+  background-image: repeating-linear-gradient(
+    -45deg,
+    var(--color-butter) 0 14px,
+    var(--color-punch) 14px 28px
+  );
+  animation: unseal-stripes 0.7s linear infinite;
+}
+
+/* Halftone dots block for hero / card headers */
+.halftone {
+  background-image: radial-gradient(#1a1a1a33 1.6px, transparent 2px);
+  background-size: 12px 12px;
+}
+
+.halftone-light {
+  background-image: radial-gradient(#fdf8f055 1.6px, transparent 2px);
+  background-size: 12px 12px;
+}
+
+/* Chunky display headings */
+.font-display {
+  font-family: var(--font-display);
+  letter-spacing: -0.02em;
+}
+
+/* Marquee ticker */
+@keyframes unseal-marquee {
+  from {
+    transform: translateX(0);
+  }
+  to {
+    transform: translateX(-50%);
+  }
+}
+.animate-marquee {
+  animation: unseal-marquee 22s linear infinite;
+}
+
+/* Slow spin for the starburst badge */
+@keyframes unseal-spin-slow {
+  to {
+    transform: rotate(360deg);
+  }
+}
+.animate-spin-slow {
+  animation: unseal-spin-slow 14s linear infinite;
+}
+
+/* Wiggle for the intact seal while it waits to be broken */
+@keyframes unseal-wiggle {
+  0%,
+  100% {
+    transform: rotate(-2deg);
+  }
+  50% {
+    transform: rotate(2deg);
+  }
+}
+.animate-wiggle {
+  animation: unseal-wiggle 2.4s ease-in-out infinite;
+}
+
+/* Focus visibility on cream */
+:where(a, button, input, textarea, select):focus-visible {
+  outline: 3px solid var(--color-grape);
+  outline-offset: 2px;
+}
+
+/* Form fields must stay ≥16px so mobile WebViews (incl. Nimiq Pay) don't
+   auto-zoom into them on focus. Ignore any sub-16 tailwind size utilities. */
+input,
+textarea,
+select {
+  font-size: 16px !important;
+}
+
+::selection {
+  background: var(--color-butter);
+  color: var(--color-ink);
+}
