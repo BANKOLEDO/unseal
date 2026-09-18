@@ -1,0 +1,35 @@
+{
+  "name": "unseal",
+  "private": true,
+  "version": "0.1.0",
+  "description": "Unseal — zero-escrow micro-paywall mini app for Nimiq Pay. Break the seal. Unlock the content.",
+  "license": "MIT",
+  "type": "module",
+  "scripts": {
+    "dev": "vite",
+    "build": "tsc -b && vite build",
+    "lint": "oxlint",
+    "preview": "vite preview"
+  },
+  "dependencies": {
+    "@heroicons/react": "^2.2.0",
+    "@nimiq/mini-app-sdk": "^0.1.0",
+    "motion": "^13.2.0",
+    "react": "^19.2.8",
+    "react-dom": "^19.2.8",
+    "react-qr-code": "^2.2.0",
+    "react-router-dom": "^7.18.3",
+    "viem": "^2.56.3"
+  },
+  "devDependencies": {
+    "@tailwindcss/vite": "^4.3.3",
+    "@types/node": "^24.13.3",
+    "@types/react": "^19.2.18",
+    "@types/react-dom": "^19.2.4",
+    "@vitejs/plugin-react": "^6.1.0",
+    "oxlint": "^1.79.0",
+    "tailwindcss": "^4.3.3",
+    "typescript": "~6.0.2",
+    "vite": "^8.2.2"
+  }
+}
